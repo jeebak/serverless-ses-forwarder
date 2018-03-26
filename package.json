@@ -11,5 +11,8 @@
   "dependencies": {
     "aws-lambda-ses-forwarder": "^4.2.0",
     "js-yaml": "3.8.2"
+  },
+  "devDependencies": {
+    "underscore-cli": "^0.2.19"
   }
 }
