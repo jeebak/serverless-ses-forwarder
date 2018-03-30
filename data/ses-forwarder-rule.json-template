@@ -1,0 +1,21 @@
+{
+    "Name": "$AWS_SES_RULE_NAME", 
+    "Recipients": [], 
+    "Enabled": true, 
+    "ScanEnabled": true, 
+    "Actions": [
+        {
+            "S3Action": {
+                "ObjectKeyPrefix": "$OBJECT_KEY_PREFIX", 
+                "BucketName": "$BUCKET_NAME"
+            }
+        }, 
+        {
+            "LambdaAction": {
+                "InvocationType": "Event", 
+                "FunctionArn": "arn:aws:lambda:$AWS_DEFAULT_REGION:$AWS_ACCOUNT_ID:function:$FUNCTION_NAME"
+            }
+        }
+    ], 
+    "TlsPolicy": "Optional"
+}
