@@ -10,7 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "aws-lambda-ses-forwarder": "^4.2.0",
-    "js-yaml": "3.8.2"
+    "js-yaml": "3.8.2",
+    "serverless": "^1.29.0"
   },
   "devDependencies": {
     "underscore-cli": "^0.2.19"
