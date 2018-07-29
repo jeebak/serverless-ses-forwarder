@@ -38,7 +38,9 @@ Under the hood, this app uses arithmetric's fantastic
     **NOTE:** that `config.yml` is in `.gitignore`. It is your responsibility to
     keep it out of a publicly accessibly repo (unless you don't care if your
     forwarding emails are public) and to keep a backup copy of it for safe
-    keeping.
+    keeping. I personally use [yadm](https://thelocehiliosan.github.io/yadm/)
+    to track this file as `~/.config/serverless-ses-forwarder/config.yml` and
+    symlink it to `config.yml` in a clone of this repo.
 
 1.  Deploy it
     ```
