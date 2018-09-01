@@ -1,6 +1,10 @@
 {
   "name": "serverless-aws-lambda-ses-forwarder",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeebak/serverless-ses-forwarder"
+  },
   "description": "Serverless wrapper around https://github.com/arithmetric/aws-lambda-ses-forwarder",
   "main": "handler.js",
   "scripts": {
