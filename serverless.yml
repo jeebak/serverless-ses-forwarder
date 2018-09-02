@@ -4,7 +4,7 @@ service: ses-forwarder
 provider:
   name: aws
   runtime: nodejs6.10
-
+  cfLogs: true
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -27,6 +27,9 @@ functions:
 
 resources:
  Resources:
+   SesForwarderLogGroup:
+     Properties:
+      RetentionInDays: "90"
    SesForwarderBucket:
      Type: AWS::S3::Bucket
      Properties:
