@@ -1,4 +1,7 @@
 config:
+  # aws_* used in scripts/aws.bash
+  aws_region: "set-your-region-like-us-west-2-or-delete-this-key-value-pair-to-use-default"
+  aws_profile: "my-named-serverless-aws-profile-or-delete-this-key-value-pair-to-use-default"
   fromEmail: noreply@example.com
   emailKeyPrefix: ''
   subjectPrefix: 'Forwarded: '

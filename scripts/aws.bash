@@ -9,14 +9,21 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$CURRENT_DIR" || exit
 
 AWS_DEFAULT_OUTPUT="text"
+
+# Configure these in your config.yml file:
+#   config:
+#     aws_region: "set-your-region-like-us-west-2-or-delete-this-key-value-pair-to-use-default"
+#     aws_profile: "my-named-serverless-aws-profile-or-delete-this-key-value-pair-to-use-default"
 AWS_DEFAULT_REGION="$(
   cd .. \
-    && "$(npm bin)/js-yaml" config.yml | "$(npm bin)/underscore" --outfmt text extract 'config.aws_region'  2> /dev/null \
+    && "$(npm bin)/js-yaml" config.yml \
+      | "$(npm bin)/underscore" --outfmt text extract 'config.aws_region'  2> /dev/null \
     || echo us-east-1
 )"
 AWS_PROFILE="$(
   cd .. \
-    && "$(npm bin)/js-yaml" config.yml | "$(npm bin)/underscore" --outfmt text extract 'config.aws_profile' 2> /dev/null \
+    && "$(npm bin)/js-yaml" config.yml \
+      | "$(npm bin)/underscore" --outfmt text extract 'config.aws_profile' 2> /dev/null \
     || echo default
 )"
 AWS_ACCOUNT_ID="$(
@@ -24,6 +31,7 @@ AWS_ACCOUNT_ID="$(
     sts get-caller-identity \
       --query "Account" --output text
 )"
+
 AWS_SES_RULE_SET_NAME="ses-forwarder-rule-set"
 AWS_SES_RULE_NAME="ses-forwarder-rule"
 AWS_SES_RULE_FILE="file://$PWD/../data/ses-forwarder-rule.json"
@@ -32,7 +40,8 @@ BUCKET_NAME="sesforwarder-${AWS_ACCOUNT_ID}"
 FUNCTION_NAME="ses-forwarder-dev-sesForwarder"
 OBJECT_KEY_PREFIX="$(
   cd .. \
-    && "$(npm bin)/js-yaml" config.yml | "$(npm bin)/underscore" --outfmt text extract 'config.emailKeyPrefix' 2> /dev/null \
+    && "$(npm bin)/js-yaml" config.yml \
+      | "$(npm bin)/underscore" --outfmt text extract 'config.emailKeyPrefix' 2> /dev/null \
     | sed 's:/*$::'
 )"
 
