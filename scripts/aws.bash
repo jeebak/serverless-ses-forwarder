@@ -8,6 +8,8 @@ errcho() {
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$CURRENT_DIR" || exit
 
+[[ -e "$CURRENT_DIR/../config.yml" ]] || { errcho "No config.yml exists!"; exit 1; }
+
 AWS_DEFAULT_OUTPUT="text"
 
 # Configure these in your config.yml file:
