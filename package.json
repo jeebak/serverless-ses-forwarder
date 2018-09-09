@@ -14,11 +14,11 @@
   "license": "MIT",
   "dependencies": {
     "aws-lambda-ses-forwarder": "^4.2.0",
-    "js-yaml": "3.8.2",
-    "serverless": "^1.30.3"
+    "js-yaml": "3.8.2"
   },
   "devDependencies": {
     "n": "^2.1.12",
+    "serverless": "^1.30.3",
     "underscore-cli": "^0.2.19"
   }
 }
