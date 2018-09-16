@@ -1,7 +1,4 @@
 config:
-  # aws_* used in scripts/aws.bash
-  aws_region: "set-your-region-like-us-west-2-or-delete-this-key-value-pair-to-use-default"
-  aws_profile: "my-named-serverless-aws-profile-or-delete-this-key-value-pair-to-use-default"
   fromEmail: noreply@example.com
   emailKeyPrefix: ''
   subjectPrefix: 'Forwarded: '
@@ -15,3 +12,8 @@ config:
       - example.john@example.com
     info:
       - info@example.com
+  # Everything ABOVE are used in the aws-lambda-ses-forwarder package
+  # Everything BELOW are used in this package
+  #   aws_* used in scripts/aws.bash
+  aws_region: "set-your-region-like-us-west-2-or-delete-this-key-value-pair-to-use-default"
+  aws_profile: "my-named-serverless-aws-profile-or-delete-this-key-value-pair-to-use-default"
