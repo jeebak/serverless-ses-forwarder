@@ -1,8 +1,8 @@
 export N_PREFIX := $(HOME)/n
 export PATH := $(N_PREFIX)/bin:$(PATH)
 # These version values for node/npm are used
-NODE_VERSION="8.11.3"
-NPM_VERSION="6.9.0"
+NODE_VERSION="10.16.3"
+NPM_VERSION="6.12.0"
 
 SHELL = /bin/bash
 
