@@ -21,7 +21,6 @@
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
-    "n": "^2.1.12",
     "serverless": "^1.54.0",
     "underscore-cli": "^0.2.19"
   }
