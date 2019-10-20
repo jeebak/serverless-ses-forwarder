@@ -8,7 +8,15 @@ errcho() {
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$CURRENT_DIR" || exit
 
-[[ -e "$CURRENT_DIR/../config.yml" ]] || { errcho "No config.yml exists!"; exit 1; }
+[[ -e "$CURRENT_DIR/../config.yml" ]] || {
+  errcho "No config.yml exists!"
+  exit 1
+}
+
+get_config() {
+  "$(npm bin)/js-yaml" "$CURRENT_DIR/../config.yml" |
+    "$(npm bin)/jqn" --color=false "(u) => { return u.$1 || '$2' }"
+}
 
 AWS_DEFAULT_OUTPUT="text"
 
@@ -16,18 +24,8 @@ AWS_DEFAULT_OUTPUT="text"
 #   config:
 #     aws_region: "set-your-region-like-us-west-2-or-delete-this-key-value-pair-to-use-default"
 #     aws_profile: "my-named-serverless-aws-profile-or-delete-this-key-value-pair-to-use-default"
-AWS_DEFAULT_REGION="$(
-  cd .. \
-    && "$(npm bin)/js-yaml" config.yml \
-      | "$(npm bin)/underscore" --outfmt text extract 'config.aws_region'  2> /dev/null \
-    || echo us-east-1
-)"
-AWS_PROFILE="$(
-  cd .. \
-    && "$(npm bin)/js-yaml" config.yml \
-      | "$(npm bin)/underscore" --outfmt text extract 'config.aws_profile' 2> /dev/null \
-    || echo default
-)"
+AWS_DEFAULT_REGION="$(get_config config.aws_region us-east-1)"
+AWS_PROFILE="$(get_config config.aws_profile default)"
 AWS_ACCOUNT_ID="$(
   aws --profile "$AWS_PROFILE" --region "$AWS_DEFAULT_REGION" \
     sts get-caller-identity \
@@ -40,12 +38,7 @@ AWS_SES_RULE_FILE="file://$PWD/../data/ses-forwarder-rule.json"
 
 BUCKET_NAME="sesforwarder-${AWS_ACCOUNT_ID}"
 FUNCTION_NAME="ses-forwarder-dev-sesForwarder"
-OBJECT_KEY_PREFIX="$(
-  cd .. \
-    && "$(npm bin)/js-yaml" config.yml \
-      | "$(npm bin)/underscore" --outfmt text extract 'config.emailKeyPrefix' 2> /dev/null \
-    | sed 's:/*$::'
-)"
+OBJECT_KEY_PREFIX="$(get_config config.emailKeyPrefix cache | sed 's:/*$::')"
 
 export AWS_DEFAULT_OUTPUT AWS_DEFAULT_REGION AWS_PROFILE OBJECT_KEY_PREFIX
 
