@@ -1,7 +1,4 @@
-export N_PREFIX := $(HOME)/n
-export PATH := $(N_PREFIX)/bin:$(PATH)
 # These version values for node/npm are used
-NODE_VERSION="10.16.3"
 NPM_VERSION="6.12.0"
 
 SHELL = /bin/bash
@@ -14,7 +11,6 @@ remove: config-exists npm-install is-aws-available
 
 npm-install: is-npm-available
 	@npm install
-	@./node_modules/.bin/n "$(NODE_VERSION)"
 	@npm install -g npm@"$(NPM_VERSION)"
 
 is-npm-available:
