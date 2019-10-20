@@ -21,6 +21,7 @@
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
+    "jq.node": "^2.1.2",
     "serverless": "^1.54.0"
   }
 }
