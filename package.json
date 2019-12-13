@@ -17,7 +17,7 @@
   "author": "Anthony Howell anthonyrhowell@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "aws-lambda-ses-forwarder": "^4.2.0",
+    "aws-lambda-ses-forwarder": "git+https://github.com/jeebak/aws-lambda-ses-forwarder.git",
     "js-yaml": "^3.13.1"
   },
   "devDependencies": {
