@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "jq.node": "^2.1.2",
-    "serverless": "^1.54.0"
+    "serverless": "^1.59.3"
   }
 }
