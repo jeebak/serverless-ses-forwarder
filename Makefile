@@ -1,5 +1,5 @@
 # These version values for node/npm are used
-NPM_VERSION="6.12.0"
+NPM_VERSION="6.13.4"
 
 SHELL = /bin/bash
 
